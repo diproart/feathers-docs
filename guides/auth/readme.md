@@ -1,22 +1,22 @@
-# Authentication Guides & Recipes
+# Руководства по аутентификации и Рецепты
 
 [**Как работают JWT**](./how-jwt-works.md)<br/>
 Узнайте больше о JWT и о том  чем этот способ отличается от того, который вы использовали ранее (Это руководство в процессе.)
 
 [**Что нового в `feathers-authentication@1.x`**](https://github.com/feathersjs/feathers-authentication/blob/master/docs/new-1.0-features.md)<br/>
-The new `feathers-authentication` introduces a lot of changes.  See what's new.
+Новая версия `feathers-authentication` представляет множество изменений.  Посмотрите что нового.
 
 [**Миграция на `feathers-authentication@1.x`**](https://github.com/feathersjs/feathers-authentication/blob/master/docs/migrating.md)<br/>
 See what needs to change to upgrade your existing Feathers application from `feathers-authentication@0.7.x`.
 
 [**Рецепт: Настройка  полезной нагрузки (payload) для JWT**](./recipe.customize-jwt-payload.md)<br/>
-You can customize the JWT payload. Learn important security implications before you decide to do it.
+Вы можете настраивать информацию, передаваемую в JWT. Изучите важные меры безопасности прежде чем решите это сделать.
 
-[**Рецепт: Customize the Login Response**](./recipe.customize-response.md)<br/>
-Learn how you can customize the response after a user has attempted to login.
+[**Рецепт: Настройка ответа при авторизации**](./recipe.customize-response.md)<br/>
+Изучите как настроить ответ сервера на попытку пользователя авторизоваться.
 
 [**Рецепт: Создание конечных точек со смешанной авторизацией**](./recipe.mixed-auth.md)<br/>
-Learn how to setup an endpoint so that it handles unauthenticated and authenticated users with different responses for each.
+Узнайте как настроить конечные точки для правильной обработки ответа для авторизованных и неавторизованных пользователей.
 
 [**Рецепт: Базовый OAuth**](./recipe.oauth-basic.md)<br/>
-Learn how OAuth (Facebook, Google, GitHub) login works, and how you can use it in your application.
+Изучить как авторизация с использованием OAuth (Facebook, Google, GitHub), и как это использовать в своем приложении.
