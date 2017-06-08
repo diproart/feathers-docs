@@ -27,12 +27,12 @@ Issuing releases is typically very quick. Once an issue is resolved it is usuall
 
 ## XSS Атаки
 
-As with any web application **you** need to guard against XSS attacks. Since Feathers persists the JWT in localstorage in the browser, if your app falls victim to a XSS attack your JWT could be used by an attacker to make malicious requests on your behalf. This is far from ideal. Therefore you need to take extra care in preventing XSS attacks. Our stance on this particular attack vector is that if you are susceptible to XSS attacks then a compromised JWT is the least of your worries because keystrokes could be logged and attackers can just steal passwords, credit card numbers, directly etc.
+Как и в любом веб-приложении **вы** должны защищаться от XSS аттак. Поскольку Feathers хранит JWT в localstorage в браузере, и если ваше приложение становиться жертвой XSS-атаки, ваш JWT может использоваться злоумышленниками для совершения вредоносных запросов от вашего имени. Это далеко не идеально. Поэтому нужно проявлять особую осторожность и внимательно относиться к защите от XSS-атак. Наша позиция в отношении этого вектора атаки заключается в том, что скомпрометированный JWT является наименьшей из проблем, потому-что в таком  случае может быть зарегистрирован и захват нажатия клавиш, что позволит просто красть пароли, номера кредитных карт и т.д. напрямую.
 
-For more information see:
+Для дополнительной информации см.:
 
 * [this issue](https://github.com/feathersjs/feathers-authentication/issues/132)
-* and [this Auth0 forum thread](https://ask.auth0.com/t/stealing-jwt-from-authenticated-user/352/3).
+* и [this Auth0 forum thread](https://ask.auth0.com/t/stealing-jwt-from-authenticated-user/352/3).
 
 
 
