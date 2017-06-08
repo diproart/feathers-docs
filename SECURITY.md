@@ -19,7 +19,7 @@ Issuing releases is typically very quick. Once an issue is resolved it is usuall
 * Не используйте слабый `secret`  для токенов. Генератор создает сложный токен автоматически. Нет необходимости  его менять.
 * Используйте хуки для проверки ролей и прав доступа пользователей, чтобы быть уверенными, что доступ предоставлен правильно. Чтобы сделать процесс проверки проще мы создали [хуки авторизации](http://docs.feathersjs.com/authorization/bundled-hooks.html) (многие из которых добавляются на этапе генерации приложения или сервиса).
 
-## Некоторые из технологий которые мы добавили
+## Некоторые из технологий которые мы используем
 
 * Password storage inside `feathers-authentication` uses [bcrypt](https://github.com/dcodeIO/bcrypt.js). We don't store the salts separately since they are included in the bcrypt hashes.
 * [JWT](https://jwt.io/) is used instead of cookies to avoid CSRF attacks. We use the `HS512` algorithm by default \(HMAC using SHA-512 hash algorithm\).
