@@ -151,7 +151,7 @@ hook => {
 ```
 
 На самом деле хук `iff` более эффективен, чем пример выше.
- It can handle an async predicate expression. This would be equivalent to being able to pass a `promise` inside the `if` statement's parentheses. It also allows us to chain an `.else()` statement, which will run if the predicate evaluates to false.
+It can handle an async predicate expression. This would be equivalent to being able to pass a `promise` inside the `if` statement's parentheses. It also allows us to chain an `.else()` statement, which will run if the predicate evaluates to false.
 
 ```js
 .else( hook => Object.assign(hook.params.query, { public: true }) )
