@@ -100,12 +100,14 @@ module.exports = function () {
 }
 ```
 
-If a `user` record contains `public: true`, then **unauthenticated** users should be able to access it. Let’s see how to use the `iff` and `else` conditional hooks from [`feathers-hooks-common`](../../api/hooks-common.md) to make this happen. Be sure to read the [`iff hook API docs`](../../api/hooks-common.md#iff) and [`else hook API docs`](../../api/hooks-common.md#else) if you haven’t, yet.
+Если `user` содержит `public: true`, то **неаутентифицированые** пользователи могут получить доступ к этой записи (просматривать её). Посмотрим как это сделать используя условия `iff` и `else` (из [`feathers-hooks-common`](../../api/hooks-common.md)) в хуках. Не забудьте познакомится с [`iff hook API docs`](../../api/hooks-common.md#iff) и [`else hook API docs`](../../api/hooks-common.md#else) если еще не сделали этого.
 
-We’re going to use the `iff` hook to authenticate users only if a token is in the request. The [`feathers-authentication-jwt` plugin](../../api/authentication/jwt.md), which we used in `src/authentication.js`, includes a token extractor. If a request includes a token, it will automatically be available inside the `hook` object at `hook.params.token`.
+Будем использовать `iff` хук чтобы аутентифицировать только пользователей в запросах которых есть токен. Плагин [`feathers-authentication-jwt`](../../api/authentication/jwt.md), который мы используем, содержит возможность получить токен из запроса. Если запрос содержит токен, он будет автоматически доступен в объекте `hook` по ключу `hook.params.token`.
 
 **src/services/users/users.hooks.js**<br/>
-(This example only shows the `find` method's `before` hooks.)
+
+(Это пример показывает работу только с хуками метода `find`)
+
 ```js
 'use strict';
 
@@ -115,19 +117,19 @@ const commonHooks = require('feathers-hooks-common');
 module.exports = {
   before: {
     find: [
-      // If a token was included, authenticate it with the `jwt` strategy.
+      // Если токен включен, аутентифицируем его со стратегией `jwt`
       commonHooks.iff(
         hook => hook.params.token,
         authenticate('jwt')
-      // No token was found, so limit the query to include `public: true`
+        // Если токена нет, устанавливаем ограничение в запросе `public: true`
       ).else( hook => Object.assign(hook.params.query, { public: true }) )
     ]
   }
 };
 ```
 
-
-Let’s break down the above example. We setup the `find` method of the `/users` service with an `iff` conditional before hook:
+Разберем пример подробнее. 
+Мы настроили метод `find` сервиса `/users` c использованием условия `iff`  в хуке `before`:
 
 ```js
 iff(
@@ -136,7 +138,7 @@ iff(
 )
 ```
 
-For this application, the above snippet is equivalent to the snippet, below.
+Для данного приложения, код примера вверху равнозначен коду ниже
 
 ```js
 hook => {
