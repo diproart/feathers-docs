@@ -36,9 +36,9 @@ app.service('messages').before({
 
 ## restrictToOwner
 
-`restrictToOwner` is meant to be used as a **before** hook. It only allows the user to retrieve or modify resources that are owned by them. It will return a _Forbidden_ error without the proper permissions. It can be used on *any* method.
+`restrictToOwner` предназначен для использования как **before** хук. Он позволяет пользователю получать и изменять ресурсы принадлежащие только ему самому. Если доступа нет будет возвращена ошибка доступа _Forbidden_. Хук может использоваться с любым методом.
 
-For `find` method calls and `patch`, `update` and `remove` of many (with `id` set to `null`), the [queryWithCurrentUser](#queryWithCurrentUser) hook will be called to limit the query to the current user. For all other cases it will retrieve the record and verify the owner before continuing.
+Для метода `find` и для `patch`, `update`, `remove` для многих записей (с `id` установленным  в `null`), будет вызван хук [queryWithCurrentUser](#queryWithCurrentUser) для ограничений к текущему пользователю. Для всех остальных случаев, перед продолжением будет извлекаться запись и проверятся, что она принадлежит пользователю. 
 
 ```js
 const hooks = require('feathers-authentication-hooks');
@@ -52,13 +52,13 @@ app.service('messages').before({
 
 #### Options
 
-- `idField` (default: '_id') [optional] - The id field on your user object.
-- `ownerField` (default: 'userId') [optional] - The id field for a user on your resource.
+- `idField` (default: '_id') [optional] - Название поля `id` для объекта пользователя.
+- `ownerField` (default: 'userId') [optional] - Название поля в запрашиваемом ресурсе, соответствующее полю `id` пользователя.
 
 
 ## restrictToAuthenticated
 
-The `restrictToAuthenticated` hook throws an error if there isn't a logged-in user by checking for the `hook.params.user` object. It can be used on **any** service method and is intended to be used as a **before** hook. It doesn't take any arguments.
+Хук `restrictToAuthenticated` вызывает ошибку если доступ пользователь не авторизован, проверяя объект `hook.params.user`. It can be used on **any** service method and is intended to be used as a **before** hook. It doesn't take any arguments.
 
 ```js
 const hooks = require('feathers-authentication-hooks');
