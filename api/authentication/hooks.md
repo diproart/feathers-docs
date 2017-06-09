@@ -91,13 +91,13 @@ app.service('messages').before({
 
 #### Options
 
-- `idField` (default: '_id') [optional] - The id field on your user object.
-- `as` (default: 'userId') [optional] - The id field for a user that you want to set on your resource.
+- `idField` (default: '_id') [optional] - Название поля `id` для объекта пользователя.
+- `as` (default: 'userId') [optional] - Поле, которое будет заполнено идентификатором пользователя в создаваемом ресурсе.
 
 
 ## restrictToRoles
 
-`restrictToRoles` is meant to be used as a **before** hook. It only allows the user to retrieve resources that are owned by them or protected by certain roles. It will return a _Forbidden_ error without the proper permissions. It can be used on `all` methods when the **owner** option is set to 'false'.  When the **owner** option is set to `true` the hook can only be used on `get`, `update`, `patch`, and `remove` service methods.
+Хук `restrictToRoles` предназначен для использования как **before** хук. Он разрешает пользователю получать ресурсы которыми он владеет или ресурсы принадлежащие к определенным ролям. Хук возвратит ошибку _Forbidden_ если у пользователя нет необходимых прав.  Может использоваться в методах `all` когда опция **owner**  установлена  в 'false'.  Когда опция **owner** имеет значение `true` хук может использоваться только в `get`, `update`, `patch`, и `remove` методах сервиса.
 
 ```js
 const hooks = require('feathers-authentication-hooks');
