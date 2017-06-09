@@ -58,7 +58,7 @@ app.service('messages').before({
 
 ## restrictToAuthenticated
 
-Хук `restrictToAuthenticated` вызывает ошибку если доступ пользователь не авторизован, проверяя объект `hook.params.user`. It can be used on **any** service method and is intended to be used as a **before** hook. It doesn't take any arguments.
+Хук `restrictToAuthenticated` вызывает ошибку если доступ пользователь не авторизован, проверяя объект `hook.params.user`. Хук может использоваться в любом методе сервиса. Он предназначен для использования в хуке **before** и не имеет никаких аргументов.
 
 ```js
 const hooks = require('feathers-authentication-hooks');
@@ -72,12 +72,12 @@ app.service('user').before({
 
 #### Options
 
-- `entity` (default: 'user') [optional] - The property name on `hook.params` to check for
+- `entity` (default: 'user') [optional] - Название свойства в `hook.params` для проверки
 
 
 ## associateCurrentUser
 
-The `associateCurrentUser` **before** hook is similar to the `queryWithCurrentUser`, but works on the incoming **data** instead of the **query** params. It's useful for automatically adding the userId to any resource being created. It can be used on `create`, `update`, or `patch` methods.
+**before** хук `associateCurrentUser` похож на `queryWithCurrentUser`, но работает для входящего параметра **data**, а не  параметров **query**. Он полезен для того, чтобы автоматически добавлять `id` текущего пользователя к создаваемым ресурсам. Может использоваться для `create`, `update`, or `patch` методов.
 
 ```js
 const hooks = require('feathers-authentication-hooks');
