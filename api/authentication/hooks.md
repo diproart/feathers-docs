@@ -117,16 +117,16 @@ app.service('messages').before({
 
 #### Options
 
-- `roles` (**required**) - An array of roles that a user must have at least one of in order to access the resource.
-- `fieldName` (default: 'roles') [optional] - The field on your user object that denotes their roles.
-- `idField` (default: '_id') [optional] - The id field on your user object.
-- `ownerField` (default: 'userId') [optional] - The id field for a user on your resource.
-- `owner` (default: 'false') [optional] - Denotes whether it should also allow owners regardless of their role (ie. the user has the role **or** is an owner).
+- `roles` (**required**) - Массив ролей, одной из которых должен обладать пользователь, чтобы получить доступ к ресурсу.
+- `fieldName` (default: 'roles') [optional] - Поле в объекте пользователя, которое описывает роли. 
+- `idField` (default: '_id') [optional] - Название поля `id` для объекта пользователя.
+- `ownerField` (default: 'userId') [optional] - Поле, которое хранит идентификатор `id` пользователя владельца ресурса.
+- `owner` (default: 'false') [optional] - Позволен или нет доступ владельцу ресурса независимо от его роли.
 
 
 ## hasRoleOrRestrict
 
-`hasRoleOrRestrict` is meant to be used as a **before** hook for any service on the **find** or **get** methods. Unless the user has one of the roles provided, it will add a restriction onto the query to limit what resources return.
+`hasRoleOrRestrict` предназначено для использования как **before** хук для любых сервисов в методах **find** или **get**. Если пользователь не имеет одной из представленных ролей, то будет добавлено ограничение на запрос, какие ресурсы возвращать.
 
 ```js
 const hooks = require('feathers-authentication-hooks');
@@ -144,6 +144,6 @@ app.service('messages').before({
 
 #### Options
 
-- `roles` (**required**) - An array of roles that a user must have at least one of in order to access the resource.
-- `fieldName` (default: 'roles') [optional] - The field on your user object that denotes their roles.
-- `restrict` (default: undefined) - The query to merge into the client query to limit what resources are accessed
+- `roles` (**required**) - Массив ролей, которыми должен обладать пользователь . Пользователь должен иметь хотя бы одну роль для доступ к ресурсу.
+- `fieldName` (default: 'roles') [optional] - Поле которое описывает роли пользователя.
+- `restrict` (default: undefined) - Запрос который будет объединен с запросом пришедшим от клиента, для правильного ограничения доступ к ресурсам.
