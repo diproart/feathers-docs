@@ -1,4 +1,4 @@
-# Authentication hooks
+# Хуки аутентификации
 
 [![GitHub stars](https://img.shields.io/github/stars/feathersjs/feathers-authentication-hooks.png?style=social&label=Star)](https://github.com/feathersjs/feathers-authentication-hooks/)
 [![npm version](https://img.shields.io/npm/v/feathers-authentication-hooks.png?style=flat-square)](https://www.npmjs.com/package/feathers-authentication-hooks)
@@ -8,14 +8,14 @@
 $ npm install feathers-authentication-hooks --save
 ```
 
-`feathers-authentication-hooks` is a package containing some useful hooks for authentication and authorization. For more information about hooks, refer to the [chapter on hooks](../hooks.md). 
+`feathers-authentication-hooks` - это пакет, который содержит некоторые полезные хуки для аутентификации и авторизации. Для дополнительной информации  см [главу о хуках](../hooks.md). 
 
-> **Note:** Restricting authentication hooks will only run when `params.provider` is set (as in when the method is accessed externally through a transport like [REST](../rest.md) or [Socketio](../socketio.md)).
+> **Замечание:** Хуки аутентификации выполняются только в том случае, когда в установлено значение `params.provider` (когда доступ к методу осуществляется извне, например через [REST](../rest.md) or [Socketio](../socketio.md)).
 
 
 ## queryWithCurrentUser
 
-The `queryWithCurrentUser` **before** hook will automatically add the user's `id` as a parameter in the query. This is useful when you want to only return data, for example "messages", that were sent by the current user.
+`queryWithCurrentUser` **before** хук автоматически добавляет к запросу идентификатор пользователя как параметр `id`. Это удобно когда вы хотите возвратить данные, например "сообщения", которые были добавлены конкретно текущим пользователем.
 
 ```js
 const hooks = require('feathers-authentication-hooks');
@@ -29,11 +29,10 @@ app.service('messages').before({
 
 #### Options
 
-- `idField` (default: '_id') [optional] - The id field on your user object.
-- `as` (default: 'userId') [optional] - The id field for a user on the resource you are requesting.
+- `idField` (default: '_id') [optional] - Название поля `id` для объекта пользователя.
+- `as` (default: 'userId') [optional] - Название поля в запрашиваемом ресурсе, соответствующее полю `id` пользователя.
 
-When using this hook with the default options the `User._id` will be copied into `hook.params.query.userId`.
-
+Когда мы используем это хук с опциями по умолчанию, то `User._id` будет скопировано  в `hook.params.query.userId`.
 
 ## restrictToOwner
 
